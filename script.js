@@ -40,6 +40,8 @@ const noteSubject = document.getElementById('noteSubject');
 const saveManualNoteBtn = document.getElementById('saveManualNote');
 const searchInput = document.querySelector('.search-box');
 const searchButton = document.querySelector('.btn-primary');
+const exportAllPdfBtn = document.getElementById('exportAllPdf');
+const generatePdfBtn = document.getElementById('generatePdf');
 
 // Camera stream
 let stream = null;
@@ -48,6 +50,9 @@ let currentFilters = {
     exam: null,
     tag: null
 };
+
+// Initialize jsPDF
+const { jsPDF } = window.jspdf;
 
 // Display notes
 function displayNotes(filteredNotes = null) {
@@ -67,14 +72,27 @@ function displayNotes(filteredNotes = null) {
             <div class="text-muted small mb-2">${note.subject} • ${note.date}</div>
             <div class="note-content">${note.content.replace(/\n/g, '<br>')}</div>
             <div class="note-actions">
-                <button class="edit-note" data-id="${note.id}"><i class="fas fa-edit"></i></button>
-                <button class="delete-note" data-id="${note.id}"><i class="fas fa-trash"></i></button>
+                <button class="edit-note" data-id="${note.id}" title="Edit Note">
+                    <i class="fas fa-edit me-1"></i> Edit
+                </button>
+                <button class="export-pdf-btn export-single-pdf" data-id="${note.id}" title="Export as PDF">
+                    <i class="fas fa-file-pdf me-1"></i> PDF
+                </button>
+                <button class="delete-note" data-id="${note.id}" title="Delete Note">
+                    <i class="fas fa-trash me-1"></i> Delete
+                </button>
             </div>
         `;
         notesList.appendChild(noteElement);
     });
     
-    // Add event listeners for edit and delete buttons
+    // Add event listeners for buttons
+    addNoteEventListeners();
+}
+
+// Add event listeners to note buttons
+function addNoteEventListeners() {
+    // Edit buttons
     document.querySelectorAll('.edit-note').forEach(button => {
         button.addEventListener('click', function() {
             const noteId = parseInt(this.getAttribute('data-id'));
@@ -82,10 +100,19 @@ function displayNotes(filteredNotes = null) {
         });
     });
     
+    // Delete buttons
     document.querySelectorAll('.delete-note').forEach(button => {
         button.addEventListener('click', function() {
             const noteId = parseInt(this.getAttribute('data-id'));
             deleteNote(noteId);
+        });
+    });
+    
+    // Single PDF export buttons
+    document.querySelectorAll('.export-single-pdf').forEach(button => {
+        button.addEventListener('click', function() {
+            const noteId = parseInt(this.getAttribute('data-id'));
+            exportSingleNoteAsPdf(noteId);
         });
     });
 }
@@ -306,130 +333,3 @@ function editNote(id) {
         };
         
         saveManualNoteBtn.removeEventListener('click', originalSaveHandler);
-        saveManualNoteBtn.addEventListener('click', updateHandler);
-    }
-}
-
-// Delete note
-function deleteNote(id) {
-    if (confirm('Are you sure you want to delete this note?')) {
-        notes = notes.filter(n => n.id !== id);
-        displayNotes();
-        updateStats();
-        showNotification('Note deleted successfully!', 'warning');
-    }
-}
-
-// Search functionality
-searchButton.addEventListener('click', performSearch);
-searchInput.addEventListener('keyup', function(event) {
-    if (event.key === 'Enter') {
-        performSearch();
-    }
-});
-
-function performSearch() {
-    const searchTerm = searchInput.value.toLowerCase().trim();
-    
-    if (searchTerm === '') {
-        displayNotes();
-        return;
-    }
-    
-    const filteredNotes = notes.filter(note => 
-        note.title.toLowerCase().includes(searchTerm) ||
-        note.subject.toLowerCase().includes(searchTerm) ||
-        note.content.toLowerCase().includes(searchTerm)
-    );
-    
-    displayNotes(filteredNotes);
-}
-
-// Update stats
-function updateStats() {
-    const totalNotes = notes.length;
-    const subjects = [...new Set(notes.map(note => note.subject))].length;
-    
-    document.querySelectorAll('.stats-number')[0].textContent = totalNotes;
-    document.querySelectorAll('.stats-number')[1].textContent = subjects;
-    
-    // Update progress bars (simulated)
-    const progressBars = document.querySelectorAll('.progress-bar');
-    progressBars.forEach(bar => {
-        const currentWidth = parseInt(bar.style.width);
-        const newWidth = Math.min(currentWidth + 5, 100);
-        bar.style.width = `${newWidth}%`;
-    });
-}
-
-// Show notification
-function showNotification(message, type = 'info') {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
-    notification.style.cssText = 'top: 20px; right: 20px; z-index: 1050; min-width: 300px;';
-    notification.innerHTML = `
-        ${message}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Auto remove after 3 seconds
-    setTimeout(() => {
-        if (notification.parentNode) {
-            notification.parentNode.removeChild(notification);
-        }
-    }, 3000);
-}
-
-// Filter by subject tag
-document.querySelectorAll('.subject-tag').forEach(tag => {
-    tag.addEventListener('click', function() {
-        const tagText = this.textContent;
-        let filteredNotes = [];
-        
-        if (['Mathematics', 'Science', 'History', 'Geography', 'Current Affairs'].includes(tagText)) {
-            // Filter by subject
-            filteredNotes = notes.filter(note => note.subject === tagText);
-            currentFilters.subject = tagText;
-        } else if (['UPSC', 'SSC', 'Banking', 'Railway'].includes(tagText)) {
-            // Filter by exam (simulated - in real app you'd have exam field)
-            filteredNotes = notes; // For demo, show all notes
-            currentFilters.exam = tagText;
-        } else {
-            // Filter by tag (simulated)
-            filteredNotes = notes.filter(note => 
-                note.content.toLowerCase().includes(tagText.toLowerCase()) ||
-                note.title.toLowerCase().includes(tagText.toLowerCase())
-            );
-            currentFilters.tag = tagText;
-        }
-        
-        displayNotes(filteredNotes);
-        showNotification(`Filtered by: ${tagText}`, 'info');
-    });
-});
-
-// Store the original save handler
-const originalSaveHandler = saveManualNoteBtn.onclick;
-
-// Initialize the app
-document.addEventListener('DOMContentLoaded', function() {
-    displayNotes();
-    updateStats();
-    
-    // Add smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-});
