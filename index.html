@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Notes for Competitive Exams</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-book-open me-2"></i>StudyNotes Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#notes-section"><i class="fas fa-sticky-note me-1"></i> My Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#capture-section"><i class="fas fa-camera me-1"></i> Capture Text</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-5 text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Ace Your Competitive Exams</h1>
+                    <p class="lead mb-4">Transform your handwritten notes into digital format with our smart text extraction tool. Organize, search, and revise efficiently.</p>
+                    <a href="#capture-section" class="btn btn-light btn-lg px-4 py-2">Get Started <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://cdn.pixabay.com/photo/2017/08/06/22/01/books-2596809_1280.jpg" class="img-fluid rounded shadow" alt="Study Materials">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Left Sidebar -->
+            <div class="col-lg-3 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-filter me-2"></i>Filters
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-title">Subjects</h6>
+                        <div class="mb-3">
+                            <span class="subject-tag">Mathematics</span>
+                            <span class="subject-tag">Science</span>
+                            <span class="subject-tag">History</span>
+                            <span class="subject-tag">Geography</span>
+                            <span class="subject-tag">Current Affairs</span>
+                        </div>
+                        
+                        <h6 class="card-title">Exams</h6>
+                        <div class="mb-3">
+                            <span class="subject-tag">UPSC</span>
+                            <span class="subject-tag">SSC</span>
+                            <span class="subject-tag">Banking</span>
+                            <span class="subject-tag">Railway</span>
+                        </div>
+                        
+                        <h6 class="card-title">Tags</h6>
+                        <div class="mb-3">
+                            <span class="subject-tag">Important</span>
+                            <span class="subject-tag">Formula</span>
+                            <span class="subject-tag">Definition</span>
+                            <span class="subject-tag">Theory</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-line me-2"></i>Study Stats
+                    </div>
+                    <div class="card-body">
+                        <div class="stats-card">
+                            <div class="stats-number">24</div>
+                            <div class="stats-label">Total Notes</div>
+                        </div>
+                        <div class="stats-card">
+                            <div class="stats-number">5</div>
+                            <div class="stats-label">Subjects</div>
+                        </div>
+                        <div class="stats-card">
+                            <div class="stats-number">78%</div>
+                            <div class="stats-label">Completion</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content Area -->
+            <div class="col-lg-9">
+                <!-- Search Bar -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control search-box" placeholder="Search your notes...">
+                            <button class="btn btn-primary" type="button"><i class="fas fa-search me-2"></i> Search</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Popular Exams -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-graduation-cap me-2"></i>Popular Exams
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <div class="exam-card">
+                                    <div class="exam-icon">
+                                        <i class="fas fa-university"></i>
+                                    </div>
+                                    <h5>UPSC</h5>
+                                    <p>Civil Services</p>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="exam-card">
+                                    <div class="exam-icon">
+                                        <i class="fas fa-landmark"></i>
+                                    </div>
+                                    <h5>SSC</h5>
+                                    <p>Staff Selection</p>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 45%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="exam-card">
+                                    <div class="exam-icon">
+                                        <i class="fas fa-money-check-alt"></i>
+                                    </div>
+                                    <h5>Banking</h5>
+                                    <p>PO & Clerk</p>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 30%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="exam-card">
+                                    <div class="exam-icon">
+                                        <i class="fas fa-train"></i>
+                                    </div>
+                                    <h5>Railway</h5>
+                                    <p>RRB NTPC</p>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 55%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notes Section -->
+                <section id="notes-section" class="mb-5">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span><i class="fas fa-sticky-note me-2"></i>My Notes</span>
+                            <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#addNoteModal">
+                                <i class="fas fa-plus me-1"></i> Add Note
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div id="notesList">
+                                <!-- Notes will be dynamically added here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Capture Text Section -->
+                <section id="capture-section" class="mb-5">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-camera me-2"></i>Capture & Extract Text
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="camera-container">
+                                        <video id="cameraPreview" autoplay playsinline></video>
+                                        <canvas id="captureCanvas" style="display: none;"></canvas>
+                                        <img id="capturedImage" style="display: none;" alt="Captured Image">
+                                        
+                                        <div class="camera-controls">
+                                            <button id="startCamera" class="btn btn-primary">
+                                                <i class="fas fa-camera me-2"></i> Start Camera
+                                            </button>
+                                            <button id="captureImage" class="btn btn-success" disabled>
+                                                <i class="fas fa-camera me-2"></i> Capture
+                                            </button>
+                                            <button id="retakeImage" class="btn btn-warning" style="display: none;">
+                                                <i class="fas fa-redo me-2"></i> Retake
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="noteTitle" class="form-label">Note Title</label>
+                                        <input type="text" class="form-control" id="noteTitle" placeholder="Enter title for your note">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="noteSubject" class="form-label">Subject</label>
+                                        <select class="form-select" id="noteSubject">
+                                            <option selected>Select Subject</option>
+                                            <option>Mathematics</option>
+                                            <option>Science</option>
+                                            <option>History</option>
+                                            <option>Geography</option>
+                                            <option>Current Affairs</option>
+                                        </select>
+                                    </div>
+                                    <button id="extractText" class="btn btn-primary mb-3" disabled>
+                                        <i class="fas fa-text-height me-2"></i> Extract Text
+                                    </button>
+                                    
+                                    <div class="loading-spinner" id="extractionSpinner">
+                                        <div class="spinner-border text-primary" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                        <p class="mt-2">Extracting text from image...</p>
+                                    </div>
+                                    
+                                    <div class="extracted-text" id="extractedText" style="display: none;">
+                                        <!-- Extracted text will appear here -->
+                                    </div>
+                                    
+                                    <button id="saveNote" class="btn btn-success mt-3" disabled>
+                                        <i class="fas fa-save me-2"></i> Save as Note
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p>StudyNotes Pro &copy; 2023 - Your Ultimate Study Companion for Competitive Exams</p>
+            <div class="mt-3">
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add Note Modal -->
+    <div class="modal fade" id="addNoteModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Note</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addNoteForm">
+                        <div class="mb-3">
+                            <label for="manualNoteTitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="manualNoteTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="manualNoteSubject" class="form-label">Subject</label>
+                            <select class="form-select" id="manualNoteSubject" required>
+                                <option selected disabled>Select Subject</option>
+                                <option>Mathematics</option>
+                                <option>Science</option>
+                                <option>History</option>
+                                <option>Geography</option>
+                                <option>Current Affairs</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="manualNoteContent" class="form-label">Content</label>
+                            <textarea class="form-control" id="manualNoteContent" rows="5" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveManualNote">Save Note</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Tesseract.js for OCR -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
